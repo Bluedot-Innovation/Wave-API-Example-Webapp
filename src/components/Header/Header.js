@@ -4,7 +4,7 @@ import * as styled from "./styled";
 export default function Header() {
   return (
     <styled.HeaderWrapper>
-      <Logo width="130" />
+      <Logo width="120" />
     </styled.HeaderWrapper>
   );
 }
