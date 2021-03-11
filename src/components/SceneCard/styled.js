@@ -3,9 +3,10 @@ import styled from "styled-components";
 export const SceneCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin: 2rem;
-  height: 80vh;
+  height: 70vh;
 
   h6 {
     margin: 0;
@@ -13,23 +14,6 @@ export const SceneCardWrapper = styled.div`
 
   img {
       max-width: 60%;
-  }
-`;
-
-export const Title = styled.h2`
-  position: relative;
-  font-weight: 800;
-
-  &::before {
-    content: " ";
-    height: 30px;
-    width: 30px;
-    position: absolute;
-    top: -12px;
-    left: -12px;
-    z-index: -1;
-    background-color: var(--SCREEN);
-    border-radius: 8px;
   }
 `;
 

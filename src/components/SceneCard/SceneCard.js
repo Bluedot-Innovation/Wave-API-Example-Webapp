@@ -1,10 +1,17 @@
 import { Button } from "@bluedot-innovation/bluedot-ui";
+import Title from "../Title";
 import * as styled from "./styled";
 
-export default function SceneCard({ title, image, text, buttonText, onClickButton }) {
+export default function SceneCard({
+  title,
+  image,
+  text,
+  buttonText,
+  onClickButton,
+}) {
   return (
     <styled.SceneCardWrapper>
-      <styled.Title>{title}</styled.Title>
+      <Title>{title}</Title>
       <img src={image} alt="scene card" />
       <styled.Text>{text}</styled.Text>
       <Button semiRound size="small" onClick={onClickButton}>
