@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;400;500;700;800&display=swap");
+
+:root {
+  --POWER_PURPLE: #7b10f4;
+  --SCREEN: #ebeff2;
+  --BASHO: #18182d;
+  --BLANC: #ffffff;
+  --PUNKT: #16bfe6;
+  --YELAK: #f4406f;
+  --FULUFULU: #5ab75f;
+  --TUNDORA: #4b4b4b;
+}
+
+* {
+  font-family: "Spartan", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
