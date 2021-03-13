@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { Button } from "@bluedot-innovation/bluedot-ui";
 import { useAppContext } from "../../appContext";
 import Title from "../../components/Title";
@@ -10,16 +10,17 @@ import * as styled from "./styled";
 export default function OrderPlacement() {
   const { state, dispatch } = useAppContext();
   const history = useHistory();
+  const urlParams = useLocation();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    history.push("/confirm-arrival");
+    history.push(`/confirm-arrival${urlParams.search}`);
   };
 
   const handleInputChange = (e) => {
-      const firstname = e.target.value
-      dispatch({ type: 'updateFirstname', payload: firstname })
-  }
+    const firstname = e.target.value;
+    dispatch({ type: "updateFirstname", payload: firstname });
+  };
 
   return (
     <styled.OrderPlacementWrapper>
@@ -34,9 +35,11 @@ export default function OrderPlacement() {
           <h5>Please tell us about you</h5>
           <Input
             value={state.firstname}
-            onChange={handleInputChange} 
-            placeholder="First name *" 
-            type="text" required />
+            onChange={handleInputChange}
+            placeholder="First name *"
+            type="text"
+            required
+          />
         </div>
         <Button semiRound size="small" type="submit">
           <h6>Place Order</h6>

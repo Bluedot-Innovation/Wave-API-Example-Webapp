@@ -1,5 +1,27 @@
 import axios from "axios";
+import { DEFAULT_WAVE_REQUEST_PARAMS } from "./constants";
 
+export async function postWaveEvent(
+  projectId,
+  destinationId,
+  region,
+  customEventMetaData
+) {
+  if (!projectId || !destinationId || !region)
+    throw new Error("projectId, destinationId and region are required");
+
+  const url = getUrlByRegion(region);
+  const body = { destinationId, customEventMetaData }
+  const options = { headers: {
+    "x-bluedot-api-key": projectId 
+    } 
+  };
+  const response = await axios.post(url, body, options);
+  return response.data;
+}
+
+
+// Helper Functions
 const WAVE_URLS = {
   AU: "https://au1-events.bluedot.io/wave",
   EU: "https://eu1-events.bluedot.io/wave",
@@ -22,12 +44,20 @@ function getUrlByRegion(region) {
   }
 }
 
-export async function postWaveEvent(payload, region) {
-  if (!payload.projectId) throw new Error('projectId is required')
-  if (!payload.destinationId) throw new Error('destinationId is required')
 
-  const url = getUrlByRegion(region);
-  const options = { headers: { 'x-bluedot-api-key': payload.projectId }}
-  const response = await axios.post(url, payload);
-  return response.data;
+export function getWaveParamsFromSearchUrl(searchUrl) {
+  const searchParams = new URLSearchParams(searchUrl);
+  if (
+    searchParams.has("projectId") &&
+    searchParams.has("destinationId") &&
+    searchParams.has("region")
+  ) {
+    return {
+      projectId: searchParams.get("projectId"),
+      destinationId: searchParams.get("destinationId"),
+      region: searchParams.get("region"),
+    };
+  }
+
+  return DEFAULT_WAVE_REQUEST_PARAMS;
 }

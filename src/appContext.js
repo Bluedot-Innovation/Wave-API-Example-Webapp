@@ -21,11 +21,15 @@ function appContextReducer(state, action) {
         itemsCount: state.itemsCount + 1,
       };
     case "decreaseItemsCount":
-      const itemsCount = (state.itemsCount - 1 > 0) ? state.itemsCount - 1 : state.itemsCount
+      const itemsCount =
+        state.itemsCount - 1 > 0 ? state.itemsCount - 1 : state.itemsCount;
       return {
         ...state,
         itemsCount,
       };
+
+    case "resetState":
+      return initialState;
 
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

@@ -1,26 +1,42 @@
-import { useHistory } from 'react-router-dom'
-import { useAppContext } from '../../appContext'
-import { postWaveEvent } from '../../waveApi'
-import SceneCard from '../../components/SceneCard'
-import confirmArrivalImage from '../../images/confirm_arrival.svg'
+import { useHistory, useLocation } from "react-router-dom";
+import { nanoid } from "nanoid";
+import { useAppContext } from "../../appContext";
+import { postWaveEvent, getWaveParamsFromSearchUrl } from "../../waveApi";
+import SceneCard from "../../components/SceneCard";
+import confirmArrivalImage from "../../images/confirm_arrival.svg";
 
 export default function ConfirmArrival() {
-    const history = useHistory()
-    const { state } = useAppContext()
-    const text = `
-        Hi ${state.firstname || 'No Name'}, please head to our curbside parking space. 
+  const history = useHistory();
+  const urlParams = useLocation();
+  const { state } = useAppContext();
+  const text = `
+        Hi ${
+          state.firstname || "No Name"
+        }, please head to our curbside parking space. 
         Look for the large purple Curbside sign and park as close to it as possible.
-    `
+    `;
 
-    const handleOnClickButton = async () => {
-        await postWaveEvent()
-    }
+  const handleOnClickButton = async () => {
+    const { projectId, destinationId, region } = getWaveParamsFromSearchUrl(
+      urlParams.search
+    );
+    const eventMetaData = {
+      OrderId: nanoid(10),
+      CustomerName: state.firstname,
+    };
 
-    return <SceneCard 
-        title="Confirm Arrival"
-        text={text}
-        image={confirmArrivalImage}
-        buttonText="I'm here"
-        onClickButton={() => history.push('/curbside-pickup')}
+    await postWaveEvent(projectId, destinationId, region, eventMetaData);
+
+    history.push(`/curbside-pickup${urlParams.search}`);
+  };
+
+  return (
+    <SceneCard
+      title="Confirm Arrival"
+      text={text}
+      image={confirmArrivalImage}
+      buttonText="I'm here"
+      onClickButton={handleOnClickButton}
     />
+  );
 }
