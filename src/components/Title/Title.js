@@ -14,6 +14,7 @@ font-weight: 800;
   z-index: -1;
   background-color: var(--SCREEN);
   border-radius: 8px;
+  margin-bottom: 1rem;
 }
 `;
 
