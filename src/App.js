@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import OrderPlacement from "./scenes/OrderPlacement";
 import ConfirmArrival from "./scenes/ConfirmArrival";
 import CurbsidePickup from "./scenes/CurbsidePickup";
+import InvalidParams from "./scenes/InvalidParams";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route exact path="/curbside-pickup">
           <CurbsidePickup />
+        </Route>
+        <Route exact path="/invalid-params">
+          <InvalidParams />
         </Route>
       </Switch>
       <Footer />

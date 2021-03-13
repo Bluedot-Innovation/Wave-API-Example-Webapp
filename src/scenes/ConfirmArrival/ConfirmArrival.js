@@ -9,6 +9,8 @@ export default function ConfirmArrival() {
   const history = useHistory();
   const urlParams = useLocation();
   const { state } = useAppContext();
+
+  // TODO: Confirm with Melwin what is going to be the default firstname
   const text = `
         Hi ${
           state.firstname || "No Name"
@@ -25,9 +27,12 @@ export default function ConfirmArrival() {
       CustomerName: state.firstname,
     };
 
-    await postWaveEvent(projectId, destinationId, region, eventMetaData);
-
-    history.push(`/curbside-pickup${urlParams.search}`);
+    try {
+      await postWaveEvent(projectId, destinationId, region, eventMetaData);
+      history.push(`/curbside-pickup${urlParams.search}`);
+    } catch (error) {
+      history.push("/invalid-params", { ...error.response.data });
+    }
   };
 
   return (
