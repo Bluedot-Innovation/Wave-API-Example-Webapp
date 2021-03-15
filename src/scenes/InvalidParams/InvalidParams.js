@@ -1,23 +1,27 @@
-import { useHistory, useLocation } from 'react-router-dom'
-import SceneCard from '../../components/SceneCard'
-import invalidParamsImage from '../../images/invalid_params.svg'
+import SceneCard from "../../components/SceneCard";
+import invalidParamsImage from "../../images/invalid_params.svg";
 
 export default function InvalidParams() {
-    const history = useHistory()
-    const location = useLocation()
-
-    console.log('location', location)
-    const text = `
-        One or more of the values of the parameters in the URL are wrong.
+  const text = `
+        One or more of the parameters in the URL are missing or wrong.
         Please check that ProjectId, Destination ID and Region are correct.
-    `
-    return (
-        <SceneCard
-            title="Something went wrong"
-            text={text}
-            image={invalidParamsImage}
-            buttonText="Try again"
-            onClickButton={()=> history.push('/')}
-        />
-    )
+    `;
+  const ContactUsLink = (
+    <a
+      href="mailto:help@bluedot.io?subject=Curbside Web Sample - New URL request"
+      target="_blank"
+      rel="noreferrer"
+    >
+      Contact Us
+    </a>
+  );
+
+  return (
+    <SceneCard
+      title="Something went wrong"
+      text={text}
+      image={invalidParamsImage}
+      buttonText={ContactUsLink}
+    />
+  );
 }

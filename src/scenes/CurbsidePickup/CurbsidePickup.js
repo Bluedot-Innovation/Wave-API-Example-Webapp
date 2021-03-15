@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useAppContext } from "../../appContext"
 import SceneCard from "../../components/SceneCard";
 import curbsidePickupImage from "../../images/curbside_pickup.svg";
@@ -6,6 +6,7 @@ import curbsidePickupImage from "../../images/curbside_pickup.svg";
 export default function CurbsidePickup() {
   const { dispatch } = useAppContext()
   const history = useHistory();
+  const location = useLocation();
   const text = `
         Great! We’ve let know our staff that you have arrived. 
         Someone will be out shortly.
@@ -13,7 +14,7 @@ export default function CurbsidePickup() {
   
   const handleOnClickButton = () => {
     dispatch({ type: "resetState"})
-    history.push("/")
+    history.push(`/${location.search}`)
   }
 
   return (
@@ -21,7 +22,7 @@ export default function CurbsidePickup() {
       title="Curbside Pickup"
       image={curbsidePickupImage}
       text={text}
-      buttonText="Order Complete"
+      buttonText="Start Over"
       onClickButton={handleOnClickButton}
     />
   );

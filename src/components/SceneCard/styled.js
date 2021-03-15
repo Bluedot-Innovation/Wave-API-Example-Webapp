@@ -6,7 +6,12 @@ export const SceneCardWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 2rem;
-  height: 70vh;
+  height: 75vh;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 
   h6 {
     margin: 0;
@@ -21,6 +26,6 @@ export const Text = styled.p`
     line-height: 1.65rem;
     text-align: center;
     max-width: min(75%, 400px);
-    margin-bottom: 15%;
-    font-size: max(1rem, 2.5vw);
+    margin-bottom: min(15%, 50px);
+    font-size: clamp(0.8rem, 4.5vw, 1.2rem);
 `

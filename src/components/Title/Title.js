@@ -3,6 +3,8 @@ import styled from "styled-components";
 const TitleStyle = styled.h2`
 position: relative;
 font-weight: 800;
+font-size: clamp(1rem, 3vh, 1.5rem);
+margin-bottom: max(25%, 1rem);
 
 &::before {
   content: " ";
@@ -14,7 +16,6 @@ font-weight: 800;
   z-index: -1;
   background-color: var(--SCREEN);
   border-radius: 8px;
-  margin-bottom: 1rem;
 }
 `;
 

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { DEFAULT_WAVE_REQUEST_PARAMS } from "./constants";
 
 export async function postWaveEvent(
   projectId,
@@ -59,5 +58,5 @@ export function getWaveParamsFromSearchUrl(searchUrl) {
     };
   }
 
-  return DEFAULT_WAVE_REQUEST_PARAMS;
+  throw new Error('One or more of the required URL parameters are missing.');
 }
