@@ -4,7 +4,7 @@ const TitleStyle = styled.h2`
 position: relative;
 font-weight: 800;
 font-size: clamp(1rem, 3vh, 1.5rem);
-margin-bottom: max(25%, 1rem);
+margin-bottom: min(20%, 4rem);
 
 &::before {
   content: " ";

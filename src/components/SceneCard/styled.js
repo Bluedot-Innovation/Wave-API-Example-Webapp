@@ -18,14 +18,14 @@ export const SceneCardWrapper = styled.div`
   }
 
   img {
-      max-width: 60%;
+    width: min(50%, 250px);
   }
 `;
 
 export const Text = styled.p`
-    line-height: 1.65rem;
-    text-align: center;
-    max-width: min(75%, 400px);
-    margin-bottom: min(15%, 50px);
-    font-size: clamp(0.8rem, 4.5vw, 1.2rem);
-`
+  line-height: 1.65rem;
+  text-align: center;
+  max-width: min(75%, 400px);
+  margin-bottom: min(15%, 50px);
+  font-size: clamp(0.8rem, 4vw, 1rem);
+`;
