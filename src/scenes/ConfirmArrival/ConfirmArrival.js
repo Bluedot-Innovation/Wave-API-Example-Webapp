@@ -10,7 +10,6 @@ export default function ConfirmArrival() {
   const urlParams = useLocation();
   const { state } = useAppContext();
 
-  // TODO: Confirm with Melwin what is going to be the default firstname
   const text = `
         Hi ${
           state.firstname || "No Name"
