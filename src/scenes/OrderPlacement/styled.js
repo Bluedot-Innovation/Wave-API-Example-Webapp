@@ -5,8 +5,10 @@ export const OrderPlacementWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 2rem 1rem;
+    padding: 2rem 1rem;
+    margin: auto;
     height: 70vh;
+    max-width: 700px;
 
     h6 {
         margin: 0;
