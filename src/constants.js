@@ -1,0 +1,1 @@
+export const BURGER_PRICE = 12.99
