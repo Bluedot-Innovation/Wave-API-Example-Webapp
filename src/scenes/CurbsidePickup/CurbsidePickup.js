@@ -1,5 +1,5 @@
 import { useHistory, useLocation } from "react-router-dom";
-import { useAppContext } from "../../appContext"
+import { useAppContext, RESET_STATE } from "../../appContext"
 import SceneCard from "../../components/SceneCard";
 import curbsidePickupImage from "../../images/curbside_pickup.svg";
 
@@ -13,7 +13,7 @@ export default function CurbsidePickup() {
     `;
   
   const handleOnClickButton = () => {
-    dispatch({ type: "resetState"})
+    dispatch({ type: RESET_STATE })
     history.push(`/${location.search}`)
   }
 

@@ -1,26 +1,32 @@
 import { createContext, useContext, useReducer } from "react";
 
+// ACTIONS
+export const UPDATE_CUSTOMER_NAME = "UPDATE_CUSTOMER_NAME";
+export const DECREASE_ITEMS_COUNT = "DECREASE_ITEMS_COUNT";
+export const INCREASE_ITEMS_COUNT = "INCREASE_ITEMS_COUNT";
+export const RESET_STATE = "RESET_STATE";
+
 const AppContext = createContext();
 
 const initialState = {
-  firstname: "",
+  customerName: "",
   itemsCount: 1,
 };
 
 function appContextReducer(state, action) {
   switch (action.type) {
-    case "updateFirstname":
+    case UPDATE_CUSTOMER_NAME:
       return {
         ...state,
-        firstname: action.payload,
+        customerName: action.payload,
       };
 
-    case "increaseItemsCount":
+    case INCREASE_ITEMS_COUNT:
       return {
         ...state,
         itemsCount: state.itemsCount + 1,
       };
-    case "decreaseItemsCount":
+    case DECREASE_ITEMS_COUNT:
       const itemsCount =
         state.itemsCount - 1 > 0 ? state.itemsCount - 1 : state.itemsCount;
       return {
@@ -28,7 +34,7 @@ function appContextReducer(state, action) {
         itemsCount,
       };
 
-    case "resetState":
+    case RESET_STATE:
       return initialState;
 
     default:

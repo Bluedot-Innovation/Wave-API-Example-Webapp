@@ -4,7 +4,7 @@ export const ItemCardWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--SCREEN);
+    background-color: ${({ theme }) => theme.colors.NEUTRAL_BACKGROUND};;
     padding: 0.5rem;
     width: 85%;
     border-radius: 8px;

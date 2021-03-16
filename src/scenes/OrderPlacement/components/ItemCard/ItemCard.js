@@ -1,5 +1,5 @@
 import * as styled from "./styled";
-import { useAppContext } from "../../../../appContext";
+import { useAppContext, INCREASE_ITEMS_COUNT, DECREASE_ITEMS_COUNT } from "../../../../appContext";
 import { BURGER_PRICE } from '../../../../constants'
 import burgerImage from "../../../../images/burger.svg";
 
@@ -14,11 +14,11 @@ export default function ItemCard() {
         <h3>${BURGER_PRICE}</h3>
       </styled.ItemDescriptionWrapper>
       <styled.ItemsCountWrapper>
-        <button onClick={() => dispatch({ type: "decreaseItemsCount" })}>
+        <button onClick={() => dispatch({ type: DECREASE_ITEMS_COUNT })}>
           <h5>-</h5>
         </button>
         <h4>{state.itemsCount}</h4>
-        <button onClick={() => dispatch({ type: "increaseItemsCount" })}>
+        <button onClick={() => dispatch({ type: INCREASE_ITEMS_COUNT })}>
           <h5>+</h5>
         </button>
       </styled.ItemsCountWrapper>

@@ -12,7 +12,7 @@ export default function ConfirmArrival() {
 
   const text = `
         Hi ${
-          state.firstname || "No Name"
+          state.customerName || "No Name"
         }, please head to our curbside parking space. 
         Look for the large purple Curbside sign and park as close to it as possible.
     `;
@@ -23,14 +23,14 @@ export default function ConfirmArrival() {
     );
     const eventMetaData = {
       OrderId: nanoid(10),
-      CustomerName: state.firstname,
+      CustomerName: state.customerName,
     };
 
     try {
       await postWaveEvent(projectId, destinationId, region, eventMetaData);
       history.push(`/curbside-pickup${urlParams.search}`);
     } catch (error) {
-      history.push("/invalid-params", { ...error.response.data });
+      history.push("/invalid-params", { error: error.response.data || error });
     }
   };
 

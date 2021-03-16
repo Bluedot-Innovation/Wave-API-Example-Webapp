@@ -14,7 +14,7 @@ margin-bottom: min(20%, 4rem);
   top: -12px;
   left: -12px;
   z-index: -1;
-  background-color: var(--SCREEN);
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_BACKGROUND};
   border-radius: 8px;
 }
 `;

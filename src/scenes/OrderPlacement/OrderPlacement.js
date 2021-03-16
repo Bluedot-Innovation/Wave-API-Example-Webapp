@@ -1,6 +1,6 @@
 import { useHistory, useLocation } from "react-router-dom";
 import { Button } from "@bluedot-innovation/bluedot-ui";
-import { useAppContext } from "../../appContext";
+import { useAppContext, UPDATE_CUSTOMER_NAME } from "../../appContext";
 import Title from "../../components/Title";
 import Input from "../../components/Input";
 import ItemCard from "./components/ItemCard";
@@ -8,6 +8,7 @@ import { BURGER_PRICE } from "../../constants";
 import * as styled from "./styled";
 
 export default function OrderPlacement() {
+
   const { state, dispatch } = useAppContext();
   const history = useHistory();
   const urlParams = useLocation();
@@ -18,8 +19,8 @@ export default function OrderPlacement() {
   };
 
   const handleInputChange = (e) => {
-    const firstname = e.target.value;
-    dispatch({ type: "updateFirstname", payload: firstname });
+    const customerName = e.target.value;
+    dispatch({ type: UPDATE_CUSTOMER_NAME, payload: customerName });
   };
 
   return (
@@ -34,7 +35,7 @@ export default function OrderPlacement() {
         <div>
           <h5>Please tell us about you</h5>
           <Input
-            value={state.firstname}
+            value={state.customerName}
             onChange={handleInputChange}
             placeholder="First name *"
             type="text"
