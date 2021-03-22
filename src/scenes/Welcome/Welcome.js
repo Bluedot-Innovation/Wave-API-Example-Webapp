@@ -16,7 +16,7 @@ export default function Welcome() {
       // Throws an error if the URL doesn't have the expected params
       getWaveParamsFromSearchUrl(location.search);
     } catch (error) {
-      history.push("/invalid-params");
+      history.push("/invalid-params", { error });
     }
   }, [location.search, history]);
 
