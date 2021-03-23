@@ -5,7 +5,7 @@ import invalidParamsImage from "../../images/invalid_params.svg";
 
 export default function InvalidParams() {
   const location = useLocation();
-  const [ errorMessage, setErrorMessage ] = useState('')
+  const [errorMessage, setErrorMessage] = useState("");
 
   const errorMessages = {
     WRONG_PARAMS: `
@@ -15,18 +15,17 @@ export default function InvalidParams() {
     GENERIC_ERROR: `
       We haven't been able to inform our staff about your arrival.
       Please refresh the page and try again or send a message to our friendly Support Team.
-    `
+    `,
   };
 
   useEffect(() => {
     const { state } = location;
-    
-    if (state.error?.errorCode === "RB001") {
-      setErrorMessage(errorMessages.WRONG_PARAMS)
-    } else {
-      setErrorMessage(errorMessages.GENERIC_ERROR)
-    }
 
+    if (state?.error?.errorCode === "RB001" || state?.error?.errorCode === "WD001") {
+      setErrorMessage(errorMessages.WRONG_PARAMS);
+    } else {
+      setErrorMessage(errorMessages.GENERIC_ERROR);
+    }
   }, [location]);
 
   const ContactUsLink = (

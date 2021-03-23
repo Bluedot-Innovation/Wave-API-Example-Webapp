@@ -1,4 +1,5 @@
 import axios from "axios";
+import { CustomError } from "./helpers"
 
 export async function postWaveEvent(
   projectId,
@@ -10,15 +11,15 @@ export async function postWaveEvent(
     throw new Error("projectId, destinationId and region are required");
 
   const url = getUrlByRegion(region);
-  const body = { destinationId, customEventMetaData }
-  const options = { headers: {
-    "x-bluedot-api-key": projectId 
-    } 
+  const body = { destinationId, customEventMetaData };
+  const options = {
+    headers: {
+      "x-bluedot-api-key": projectId,
+    },
   };
   const response = await axios.post(url, body, options);
   return response.data;
 }
-
 
 // Helper Functions
 const WAVE_URLS = {
@@ -43,7 +44,6 @@ function getUrlByRegion(region) {
   }
 }
 
-
 export function getWaveParamsFromSearchUrl(searchUrl) {
   const searchParams = new URLSearchParams(searchUrl);
   if (
@@ -58,5 +58,8 @@ export function getWaveParamsFromSearchUrl(searchUrl) {
     };
   }
 
-  throw new Error('One or more of the required URL parameters are missing.');
+  throw new CustomError(
+    "WD001",
+    "One or more of the required URL parameters are missing."
+  );
 }

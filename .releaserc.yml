@@ -1,0 +1,7 @@
+{
+  "branch": "master",
+  "extends": "@semantic-release/gitlab-config",
+  "gitlabUrl": "https://gitlab.com",
+  "tagFormat": "${version}",
+  "npmPublish": false,
+}
