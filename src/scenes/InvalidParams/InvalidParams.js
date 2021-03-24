@@ -7,19 +7,19 @@ export default function InvalidParams() {
   const location = useLocation();
   const [errorMessage, setErrorMessage] = useState("");
 
-  const errorMessages = {
-    WRONG_PARAMS: `
-      One or more of the parameters in the URL are missing or wrong.
-      Please check that Project ID, Destination ID and Region are correct.
-    `,
-    GENERIC_ERROR: `
-      We haven't been able to inform our staff about your arrival.
-      Please refresh the page and try again or send a message to our friendly Support Team.
-    `,
-  };
-
   useEffect(() => {
     const { state } = location;
+    
+    const errorMessages = {
+      WRONG_PARAMS: `
+        One or more of the parameters in the URL are missing or wrong.
+        Please check that Project ID, Destination ID and Region are correct.
+      `,
+      GENERIC_ERROR: `
+        We haven't been able to inform our staff about your arrival.
+        Please refresh the page and try again or send a message to our friendly Support Team.
+      `,
+    };
 
     if (state?.error?.errorCode === "RB001" || state?.error?.errorCode === "WD001") {
       setErrorMessage(errorMessages.WRONG_PARAMS);
