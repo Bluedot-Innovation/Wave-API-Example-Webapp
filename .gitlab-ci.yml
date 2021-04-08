@@ -29,7 +29,7 @@ Release:
   script:
     - CTX=dev CTX_NO=1 make release
   only:
-    - master
+    - tags
 
 Deploy-to-Production:
   stage: release
