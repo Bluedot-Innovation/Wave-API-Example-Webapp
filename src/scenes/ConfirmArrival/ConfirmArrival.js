@@ -30,7 +30,7 @@ export default function ConfirmArrival() {
       await postWaveEvent(projectId, destinationId, region, eventMetaData);
       history.push(`/curbside-pickup${urlParams.search}`);
     } catch (error) {
-      history.push("/invalid-params", { error: error.response.data || error });
+      history.push("/invalid-params", { error: error.response?.data || error });
     }
   };
 
