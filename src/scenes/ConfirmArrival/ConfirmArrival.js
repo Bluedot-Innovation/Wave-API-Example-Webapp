@@ -14,13 +14,14 @@ export default function ConfirmArrival() {
         Hi ${
           state.customerName || "No Name"
         }, please head to our curbside parking space. 
-        Look for the large purple Curbside sign and park as close to it as possible.
+        Look for the Curbside sign and park as close to it as possible.
     `;
 
   const handleOnClickButton = async () => {
     const { projectId, destinationId, region } = getWaveParamsFromSearchUrl(
-      urlParams.search
+      decodeURI(urlParams.search)
     );
+    
     const eventMetaData = {
       OrderId: nanoid(10),
       CustomerName: state.customerName,
