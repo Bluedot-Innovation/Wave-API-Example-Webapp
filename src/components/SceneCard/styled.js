@@ -6,7 +6,7 @@ export const SceneCardWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 2rem;
-  height: 75vh;
+  height: 70vh;
 
   a {
     text-decoration: none;
@@ -18,7 +18,7 @@ export const SceneCardWrapper = styled.div`
   }
 
   img {
-    width: min(50%, 250px);
+    width: clamp(70px, 45%, 250px);
   }
 `;
 
@@ -26,6 +26,6 @@ export const Text = styled.p`
   line-height: 1.65rem;
   text-align: center;
   max-width: min(75%, 400px);
-  margin-bottom: min(15%, 50px);
-  font-size: clamp(0.8rem, 4vw, 1rem);
+  margin-bottom: min(15%, 40px);
+  font-size: clamp(0.7rem, 3.5vw, 1rem);
 `;
