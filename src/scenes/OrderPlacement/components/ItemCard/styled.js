@@ -26,7 +26,7 @@ export const ItemCardWrapper = styled.div`
     @media only screen and (max-width: 30em) {
         h3 {
             font-size: 1rem;
-            margin: 0;
+            margin: 0.1rem 0;
         }
     }
 `
