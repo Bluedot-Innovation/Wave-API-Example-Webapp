@@ -1,6 +1,7 @@
 import { useHistory, useLocation } from "react-router-dom";
 import { Button } from "@bluedot-innovation/bluedot-ui";
-import { useAppContext, UPDATE_CUSTOMER_NAME } from "../../appContext";
+import { nanoid } from "nanoid";
+import { useAppContext, UPDATE_CUSTOMER_NAME, UPDATE_ORDER_ID } from "../../appContext";
 import Title from "../../components/Title";
 import Input from "../../components/Input";
 import ItemCard from "./components/ItemCard";
@@ -15,7 +16,9 @@ export default function OrderPlacement() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    history.push(`/confirm-arrival${urlParams.search}`);
+    const orderId = nanoid(10);
+    dispatch({ type: UPDATE_ORDER_ID, payload: orderId });
+    history.push(`/on-the-way${urlParams.search}`);
   };
 
   const handleInputChange = (e) => {

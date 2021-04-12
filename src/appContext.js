@@ -2,6 +2,7 @@ import { createContext, useContext, useReducer } from "react";
 
 // ACTIONS
 export const UPDATE_CUSTOMER_NAME = "UPDATE_CUSTOMER_NAME";
+export const UPDATE_ORDER_ID = "UPDATE_ORDER_ID"
 export const DECREASE_ITEMS_COUNT = "DECREASE_ITEMS_COUNT";
 export const INCREASE_ITEMS_COUNT = "INCREASE_ITEMS_COUNT";
 export const RESET_STATE = "RESET_STATE";
@@ -10,6 +11,7 @@ const AppContext = createContext();
 
 const initialState = {
   customerName: "",
+  orderId: "",
   itemsCount: 1,
 };
 
@@ -20,6 +22,12 @@ function appContextReducer(state, action) {
         ...state,
         customerName: action.payload,
       };
+
+    case UPDATE_ORDER_ID:
+      return {
+        ...state,
+        orderId: action.payload
+      }
 
     case INCREASE_ITEMS_COUNT:
       return {
