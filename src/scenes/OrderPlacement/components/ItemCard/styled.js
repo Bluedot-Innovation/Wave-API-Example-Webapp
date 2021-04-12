@@ -22,6 +22,13 @@ export const ItemCardWrapper = styled.div`
         font-weight: 500;
         color: #707070;
     }
+
+    @media only screen and (max-width: 30em) {
+        h3 {
+            font-size: 1rem;
+            margin: 0;
+        }
+    }
 `
 
 export const ItemDescriptionWrapper = styled.div`

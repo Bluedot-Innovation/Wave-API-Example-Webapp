@@ -18,7 +18,11 @@ export const SceneCardWrapper = styled.div`
   }
 
   img {
-    width: clamp(70px, 45%, 250px);
+    /* 
+      This resolves the same as "width: clamp(70px, 45%, 250%)";
+      Adding this to be compatible with old browsers.
+    */
+    width: max(70px, min(45%, 250px));
   }
 `;
 
@@ -27,5 +31,9 @@ export const Text = styled.p`
   text-align: center;
   max-width: min(75%, 400px);
   margin-bottom: min(15%, 40px);
-  font-size: clamp(0.7rem, 3.5vw, 1rem);
+  /* 
+      This resolves the same as "font-size:clamp(0.7rem, 3.5vw, 1rem)";
+      Adding this to be compatible with old browsers.
+    */
+  font-size: max(0.7rem, min(3.5vw, 1rem));
 `;
