@@ -4,13 +4,13 @@ export const ItemCardWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: ${({ theme }) => theme.colors.NEUTRAL_BACKGROUND};;
+    background-color: ${({ theme }) => theme.colors.NEUTRAL_BACKGROUND};
     padding: 0.5rem;
     width: 85%;
     border-radius: 8px;
 
     img {
-        max-width: min(30%, 150px);
+        width: min(30%, 150px);
         flex: 1;
     }
 
@@ -25,8 +25,12 @@ export const ItemCardWrapper = styled.div`
 
     @media only screen and (max-width: 30em) {
         h3 {
-            font-size: 1rem;
+            font-size: 2vw;
             margin: 0.1rem 0;
+        }
+
+        img {
+            max-width: 100px;
         }
     }
 `
@@ -49,6 +53,7 @@ export const ItemsCountWrapper = styled.div`
 
     button {
         border: none;
+        background-color: ${({ theme }) => theme.colors.NEUTRAL_BACKGROUND}
     }
 
 `

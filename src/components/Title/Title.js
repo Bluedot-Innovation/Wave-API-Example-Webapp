@@ -17,6 +17,10 @@ const TitleStyle = styled.h2`
     background-color: ${({ theme }) => theme.colors.NEUTRAL_BACKGROUND};
     border-radius: 8px;
   }
+
+  @media only screen and (max-width: 30em) {
+    font-size: 4.5vw;
+  }
 `;
 
 export default function Title({ children }) {
