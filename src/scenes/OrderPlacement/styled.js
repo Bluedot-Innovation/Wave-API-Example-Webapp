@@ -9,6 +9,7 @@ export const OrderPlacementWrapper = styled.div`
     margin: auto;
     height: 70vh;
     max-width: 700px;
+    overflow: auto;
 
     h6 {
         margin: 0;
@@ -38,5 +39,11 @@ export const TotalPriceWrapper = styled.div`
     p {
         color: #707070;
         font-size: 0.8rem;
+    }
+
+    @media only screen and (max-width: 30em) {
+        h2 {
+            font-size: 5vw
+        };
     }
 `
