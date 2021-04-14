@@ -41,10 +41,8 @@ Deploy-to-Production:
   script:
     - git config --global user.email "$GITLAB_USER_EMAIL"
     - git config --global user.name "$GITLAB_USER_ID"
-    - echo $GITLAB_USER_EMAIL
-    - echo $GITLAB_USER_ID
-    - echo $CI_PROJECT_PATH
-    - git remote set-url origin "https://$CI_USERNAME:$CI_ACCESS_TOKEN@gitlab.com/$CI_PROJECT_PATH.git"
+    - git remote set-url origin "https://$CI_USERNAME:$CI_ACCESS_TOKEN@gitlab.com/bluedotio/backend_ui/wave_demo.git"
+    - git config --get remote.origin.url
     - git remote show origin
     - git fetch
     - git checkout production
