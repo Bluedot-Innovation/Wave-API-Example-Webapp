@@ -27,7 +27,7 @@ export default function OnTheWay() {
     const eventMetaData = {
       OrderId: state.orderId,
       CustomerName: state.customerName,
-      eventType: EVENT_TYPE.ARRIVAL,
+      eventType: EVENT_TYPE.ON_THE_WAY,
     };
 
     try {
