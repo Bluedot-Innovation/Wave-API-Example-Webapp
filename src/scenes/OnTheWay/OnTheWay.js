@@ -1,35 +1,38 @@
 import { useHistory, useLocation } from "react-router-dom";
 import { useAppContext } from "../../appContext";
-import { postWaveEvent, getWaveParamsFromSearchUrl, EVENT_TYPE } from "../../waveApi";
+import {
+  postWaveEvent,
+  getWaveParamsFromSearchUrl,
+  EVENT_TYPE,
+} from "../../waveApi";
 import SceneCard from "../../components/SceneCard";
-import confirmArrivalImage from "../../images/confirm_arrival.svg";
+import onTheWayImage from "../../images/on_the_way.svg";
 
-export default function ConfirmArrival() {
+export default function OnTheWay() {
   const history = useHistory();
   const urlParams = useLocation();
   const { state } = useAppContext();
-
   const text = `
-        Hi ${
-          state.customerName || "No Name"
-        }, please head to our curbside parking space. 
-        Look for the Curbside sign and park as close to it as possible.
-    `;
+    Hi ${
+      state.customerName || "No Name"
+    }, let us know when you're coming to collect your order.
+    We'll make sure to have it fresh for when you arrive.
+`;
 
   const handleOnClickButton = async () => {
     const { projectId, destinationId, region } = getWaveParamsFromSearchUrl(
       decodeURI(urlParams.search)
     );
-    
+
     const eventMetaData = {
       OrderId: state.orderId,
       CustomerName: state.customerName,
-      eventType: EVENT_TYPE.ARRIVAL
+      eventType: EVENT_TYPE.ON_THE_WAY,
     };
 
     try {
       await postWaveEvent(projectId, destinationId, region, eventMetaData);
-      history.push(`/curbside-pickup${urlParams.search}`);
+      history.push(`/confirm-arrival${urlParams.search}`);
     } catch (error) {
       history.push("/invalid-params", { error: error.response?.data || error });
     }
@@ -37,10 +40,10 @@ export default function ConfirmArrival() {
 
   return (
     <SceneCard
-      title="Confirm Arrival"
+      title="On The Way"
       text={text}
-      image={confirmArrivalImage}
-      buttonText="I'm here"
+      image={onTheWayImage}
+      buttonText="I'm on the way"
       onClickButton={handleOnClickButton}
     />
   );

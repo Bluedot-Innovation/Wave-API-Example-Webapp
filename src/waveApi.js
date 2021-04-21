@@ -22,6 +22,11 @@ export async function postWaveEvent(
 }
 
 // Helper Functions
+export const EVENT_TYPE = {
+  ON_THE_WAY: 'onTheWay',
+  ARRIVAL: 'arrival'
+}
+
 const WAVE_URLS = {
   AU: "https://au1-events.bluedot.io/wave",
   EU: "https://eu1-events.bluedot.io/wave",

@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Welcome from "./scenes/Welcome";
 import OrderPlacement from "./scenes/OrderPlacement";
+import OnTheWay from "./scenes/OnTheWay";
 import ConfirmArrival from "./scenes/ConfirmArrival";
 import CurbsidePickup from "./scenes/CurbsidePickup";
 import InvalidParams from "./scenes/InvalidParams";
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route exact path="/order-placement">
             <OrderPlacement />
+          </Route>
+          <Route exact path="/on-the-way">
+            <OnTheWay />
           </Route>
           <Route exact path="/confirm-arrival">
             <ConfirmArrival />
