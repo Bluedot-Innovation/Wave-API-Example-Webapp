@@ -8,13 +8,14 @@ export default function SceneCard({
   text,
   buttonText,
   onClickButton,
+    loading
 }) {
   return (
     <styled.SceneCardWrapper>
       <Title>{title}</Title>
       <img src={image} alt="scene card" />
       <styled.Text>{text}</styled.Text>
-      <Button semiRound size="small" onClick={onClickButton}>
+      <Button semiRound size="small" onClick={onClickButton} disabled={loading}>
         <h6>{buttonText}</h6>
       </Button>
     </styled.SceneCardWrapper>
