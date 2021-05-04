@@ -1,4 +1,5 @@
 import { Button } from "@bluedot-innovation/bluedot-ui";
+import Loader from "react-loader-spinner";
 import Title from "../Title";
 import * as styled from "./styled";
 
@@ -8,7 +9,7 @@ export default function SceneCard({
   text,
   buttonText,
   onClickButton,
-    loading
+  loading
 }) {
   return (
     <styled.SceneCardWrapper>
@@ -16,7 +17,11 @@ export default function SceneCard({
       <img src={image} alt="scene card" />
       <styled.Text>{text}</styled.Text>
       <Button semiRound size="small" onClick={onClickButton} disabled={loading}>
-        <h6>{buttonText}</h6>
+          {loading ? (
+              <Loader type="Oval" color="#00BFFF" height={35} width={35}/>
+          ) : (
+              <h6>{buttonText}</h6>
+          )}
       </Button>
     </styled.SceneCardWrapper>
   );
